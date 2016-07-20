@@ -1,0 +1,17 @@
+{% extends "ICNPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Modifier une annonce - {{ parent() }}
+{% endblock %}
+
+{% block icnplatform_body %}
+
+    <h2>Ajouter une annonce</h2>
+
+    {{ include("ICNPlatformBundle:Advert:form.html.twig") }}
+
+    <p>
+        Vous ajoutez une nouvelle annonce.
+    </p>
+
+{% endblock %}

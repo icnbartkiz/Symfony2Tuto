@@ -1,0 +1,34 @@
+{% extends "ICNPlatformBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Index{% endblock %}
+
+{% block icnplatform_body %}
+
+    <h2>Liste des annonces</h2>
+
+    <ul>
+        {% for advert in listAdverts %}
+            <li>
+                {% if advert.image is not null %}
+                    <img src="{{ asset(advert.image.webPath) }}" alt="{{ advert.image.alt }}" class="img-thumbnail img-responsive">
+                {% endif %}
+                <a href="{{ path('icn_platform_view', {'id': advert.id}) }}">
+                    {{ advert.title }}
+                </a>
+                par {{ advert.author }},
+                le {{ advert.date|date('d/m/Y') }}
+            </li>
+        {% else %}
+            <li>Pas (encore !) d'annonces</li>
+        {% endfor %}
+    </ul>
+    {% if nbPages > 1 %}
+        <ul class="pagination">
+            {% for p in range(1, nbPages) %}
+                <li {{ p == page ? "class='active'" }}>
+                    <a href="{{ path("icn_platform_home", {'page': p}) }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

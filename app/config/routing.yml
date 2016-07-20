@@ -1,0 +1,3 @@
+icn_platform:
+    resource: "@ICNPlatformBundle/Resources/config/routing.yml"
+    prefix:   /platform

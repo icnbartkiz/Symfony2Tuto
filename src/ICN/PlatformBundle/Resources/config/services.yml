@@ -1,0 +1,14 @@
+services:
+#    icn_platform.example:
+#        class: ICN\PlatformBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    icn_platform.antispam:
+        class: ICN\PlatformBundle\Antispam\ICNAntispam
+        arguments: [@mailer, %locale%, 50]
+
+    icn_platform.doctrine.notification:
+        class: ICN\PlatformBundle\DoctrineListener\ApplicationNotification
+        arguments: [@mailer]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
